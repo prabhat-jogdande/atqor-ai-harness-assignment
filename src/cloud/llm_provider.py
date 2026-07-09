@@ -11,11 +11,24 @@ Future:
 import os
 
 
-def get_provider():
+def get_provider() -> str:
+    """
+    Returns the configured LLM provider.
 
-    provider = os.getenv(
+    Supported:
+    - aws
+    - azure
+    """
+
+    return os.getenv(
         "LLM_PROVIDER",
         "aws"
-    ).lower()
+    ).strip().lower()
 
-    return provider
+
+def is_aws() -> bool:
+    return get_provider() == "aws"
+
+
+def is_azure() -> bool:
+    return get_provider() == "azure"
