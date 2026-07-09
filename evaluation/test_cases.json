@@ -1,0 +1,42 @@
+[
+    {
+        "question": "How many customers do we have?",
+        "expected_sql": "SELECT COUNT(*) AS total_customers FROM customers;"
+    },
+    {
+        "question": "Show top 5 customers by revenue",
+        "expected_sql": "SELECT c.name, SUM(o.total_amount) AS revenue FROM customers c JOIN orders o ON c.id=o.customer_id GROUP BY c.id,c.name ORDER BY revenue DESC LIMIT 5;"
+    },
+    {
+        "question": "Total revenue",
+        "expected_sql": "SELECT SUM(total_amount) FROM orders;"
+    },
+    {
+        "question": "Average order value",
+        "expected_sql": "SELECT AVG(total_amount) FROM orders;"
+    },
+    {
+        "question": "Orders by status",
+        "expected_sql": "SELECT status, COUNT(*) FROM orders GROUP BY status;"
+    },
+    {
+        "question": "Customers by region",
+        "expected_sql": "SELECT region, COUNT(*) FROM customers GROUP BY region;"
+    },
+    {
+        "question": "Products by category",
+        "expected_sql": "SELECT category, COUNT(*) FROM products GROUP BY category;"
+    },
+    {
+        "question": "Top 10 expensive products",
+        "expected_sql": "SELECT name,list_price FROM products ORDER BY list_price DESC LIMIT 10;"
+    },
+    {
+        "question": "Support tickets by priority",
+        "expected_sql": "SELECT priority, COUNT(*) FROM support_tickets GROUP BY priority;"
+    },
+    {
+        "question": "Total number of orders",
+        "expected_sql": "SELECT COUNT(*) FROM orders;"
+    }
+]

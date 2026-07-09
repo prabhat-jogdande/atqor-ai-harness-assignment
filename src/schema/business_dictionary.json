@@ -1,0 +1,12 @@
+{
+  "sales": "orders.total_amount",
+  "revenue": "orders.total_amount",
+  "customers": "customers",
+  "orders": "orders",
+  "products": "products",
+  "support": "support_tickets",
+  "campaign": "campaigns",
+  "marketing": "campaigns",
+  "region": "customers.region",
+  "segment": "customers.segment"
+}

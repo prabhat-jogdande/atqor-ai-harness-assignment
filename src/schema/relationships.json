@@ -1,0 +1,21 @@
+{
+  "customers.id": [
+    "orders.customer_id",
+    "campaign_conversions.customer_id",
+    "support_tickets.customer_id"
+  ],
+
+  "orders.id": [
+    "order_items.order_id",
+    "campaign_conversions.order_id",
+    "support_tickets.order_id"
+  ],
+
+  "products.id": [
+    "order_items.product_id"
+  ],
+
+  "campaigns.id": [
+    "campaign_conversions.campaign_id"
+  ]
+}

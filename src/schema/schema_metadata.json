@@ -1,0 +1,64 @@
+{
+  "database": "business_db",
+
+  "tables": [
+    {
+      "name": "customers",
+      "description": "Customer master data",
+      "primary_key": "id",
+      "columns": {
+        "id": "Customer ID",
+        "name": "Customer Name",
+        "email": "Customer Email",
+        "segment": "Business Segment",
+        "region": "Customer Region",
+        "created_at": "Registration Date"
+      }
+    },
+
+    {
+      "name": "orders",
+      "description": "Sales Orders",
+      "primary_key": "id",
+      "columns": {
+        "id": "Order ID",
+        "customer_id": "Customer ID",
+        "order_date": "Order Date",
+        "status": "Order Status",
+        "total_amount": "Revenue",
+        "discount": "Discount",
+        "channel": "Sales Channel"
+      }
+    },
+
+    {
+      "name": "products",
+      "description": "Product Catalog",
+      "primary_key": "id"
+    },
+
+    {
+      "name": "order_items",
+      "description": "Order Line Items",
+      "primary_key": "id"
+    },
+
+    {
+      "name": "campaigns",
+      "description": "Marketing Campaigns",
+      "primary_key": "id"
+    },
+
+    {
+      "name": "campaign_conversions",
+      "description": "Campaign Attribution",
+      "primary_key": "id"
+    },
+
+    {
+      "name": "support_tickets",
+      "description": "Customer Support Tickets",
+      "primary_key": "id"
+    }
+  ]
+}

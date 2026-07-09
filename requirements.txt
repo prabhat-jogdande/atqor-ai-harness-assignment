@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+boto3
+python-dotenv
+pandas
+sqlglot
+sqlparse
+sentence-transformers
+faiss-cpu
+numpy
+faker
+pydantic
+jinja2
+pyyaml
+tabulate
+openai
+tiktoken

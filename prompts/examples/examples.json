@@ -1,0 +1,82 @@
+[
+  {
+    "question": "How many customers do we have?",
+    "sql": "SELECT COUNT(*) FROM customers;"
+  },
+  {
+    "question": "List all customer names",
+    "sql": "SELECT name FROM customers;"
+  },
+  {
+    "question": "Show top 5 customers by revenue",
+    "sql": "SELECT c.name, SUM(o.total_amount) FROM customers c JOIN orders o ON c.id = o.customer_id GROUP BY c.id, c.name ORDER BY SUM(o.total_amount) DESC LIMIT 5;"
+  },
+  {
+    "question": "What is the total revenue?",
+    "sql": "SELECT SUM(total_amount) FROM orders;"
+  },
+  {
+    "question": "What is the average order value?",
+    "sql": "SELECT AVG(total_amount) FROM orders;"
+  },
+  {
+    "question": "How many orders have been placed?",
+    "sql": "SELECT COUNT(*) FROM orders;"
+  },
+  {
+    "question": "Show all pending orders",
+    "sql": "SELECT * FROM orders WHERE status = 'Pending';"
+  },
+  {
+    "question": "Count orders by status",
+    "sql": "SELECT status, COUNT(*) FROM orders GROUP BY status;"
+  },
+  {
+    "question": "Show products in Electronics category",
+    "sql": "SELECT * FROM products WHERE category = 'Electronics';"
+  },
+  {
+    "question": "Top 10 most expensive products",
+    "sql": "SELECT name, list_price FROM products ORDER BY list_price DESC LIMIT 10;"
+  },
+  {
+    "question": "Count products by category",
+    "sql": "SELECT category, COUNT(*) FROM products GROUP BY category;"
+  },
+  {
+    "question": "Show customers from North region",
+    "sql": "SELECT * FROM customers WHERE region = 'North';"
+  },
+  {
+    "question": "Count customers by segment",
+    "sql": "SELECT segment, COUNT(*) FROM customers GROUP BY segment;"
+  },
+  {
+    "question": "Show support tickets with High priority",
+    "sql": "SELECT * FROM support_tickets WHERE priority = 'High';"
+  },
+  {
+    "question": "Count support tickets by priority",
+    "sql": "SELECT priority, COUNT(*) FROM support_tickets GROUP BY priority;"
+  },
+  {
+    "question": "Find the highest order amount",
+    "sql": "SELECT MAX(total_amount) FROM orders;"
+  },
+  {
+    "question": "Find the lowest order amount",
+    "sql": "SELECT MIN(total_amount) FROM orders;"
+  },
+  {
+    "question": "Show the latest 10 orders",
+    "sql": "SELECT * FROM orders ORDER BY order_date DESC LIMIT 10;"
+  },
+  {
+    "question": "List product names",
+    "sql": "SELECT name FROM products;"
+  },
+  {
+    "question": "List customer names and regions",
+    "sql": "SELECT name, region FROM customers;"
+  }
+]

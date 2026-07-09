@@ -1,0 +1,31 @@
+{
+    "marketing_analyst": {
+        "tables": [
+            "customers",
+            "orders",
+            "campaigns",
+            "campaign_conversions"
+        ]
+    },
+
+    "finance_lead": {
+        "tables": [
+            "customers",
+            "orders",
+            "order_items",
+            "products"
+        ]
+    },
+
+    "executive": {
+        "tables": [
+            "customers",
+            "orders",
+            "order_items",
+            "products",
+            "campaigns",
+            "campaign_conversions",
+            "support_tickets"
+        ]
+    }
+}

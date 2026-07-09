@@ -1,0 +1,26 @@
+[
+    {
+        "session_id": "demo",
+        "question": "Show revenue by region",
+        "generated_sql": "SELECT ...",
+        "summary": "Revenue increased.",
+        "rating": "thumbs_up",
+        "corrected_sql": null
+    },
+    {
+        "session_id": "demo",
+        "question": "Show revenue by region",
+        "generated_sql": "SELECT ...",
+        "summary": "Revenue increased.",
+        "rating": "thumbs_up",
+        "corrected_sql": null
+    },
+    {
+        "session_id": "demo",
+        "question": "Show revenue by region",
+        "generated_sql": "SELECT ...",
+        "summary": "Wrong answer",
+        "rating": "thumbs_down",
+        "corrected_sql": "SELECT region,SUM(total_amount) FROM ..."
+    }
+]
