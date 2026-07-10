@@ -1,17 +1,52 @@
 # Azure Migration Guide
 
-## Current
+## Initial Local Stack
 
-- AWS Bedrock
-- SQLite
-- Local JSON
-- Local FAISS
+- AWS Bedrock (Development)
+- SQLite Database
+- Local JSON Metadata
+- Local Few-shot Retriever
 
-## Target
+---
+
+## Azure Migration Status
+
+### ✅ Completed
 
 - Azure OpenAI
-- Azure SQL
+  - GPT-5 deployment
+  - SQL generation
+  - Business summary generation
+
+- Azure SQL Database
+  - Database created
+  - Schema migrated
+  - Data migrated
+  - Query execution integrated
+
+- Azure Blob Storage
+  - Storage account created
+  - Prompt and metadata storage
+  - Blob connectivity verified
+
+- Provider Abstraction
+  - AWS ↔ Azure switching
+  - Configurable through environment variables
+
+---
+
+## Partially Implemented
+
 - Azure AI Search
-- Azure Blob
-- Azure Redis
+  - Service created
+  - Ready for semantic retrieval
+  - Full vector indexing pending
+
+---
+
+## Planned Enhancements
+
+- Azure Key Vault
 - Azure Application Insights
+- Azure Managed Identity
+- Azure Redis Cache

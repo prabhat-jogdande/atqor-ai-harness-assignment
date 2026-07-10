@@ -4,7 +4,7 @@
 
 The system converts natural language business questions into executable SQL queries using a modular AI Harness architecture.
 
-The design is cloud agnostic and currently runs locally using SQLite and AWS Bedrock. The architecture is designed for seamless migration to Azure AI services.
+The solution is cloud-ready and supports both AWS and Azure through a provider abstraction layer. The current implementation is fully integrated with Azure OpenAI, Azure SQL Database, and Azure Blob Storage.
 
 ---
 
@@ -45,11 +45,9 @@ The design is cloud agnostic and currently runs locally using SQLite and AWS Bed
 
                          ▼
 
-                      LLM
+             LLM Provider Abstraction
 
-         Current : AWS Bedrock
-
-         Future : Azure OpenAI
+         AWS Bedrock / Azure OpenAI
 
                          │
 
@@ -72,20 +70,21 @@ The design is cloud agnostic and currently runs locally using SQLite and AWS Bed
 
                   Query Executor
 
-                      SQLite
+          SQLite / Azure SQL Database
 
                          │
 
                          ▼
 
-                  Result Summary
+                 Business Summary
+
+                  Azure OpenAI
 
                          │
 
                          ▼
 
                     JSON Response
-
 ```
 
 ---
@@ -94,19 +93,19 @@ The design is cloud agnostic and currently runs locally using SQLite and AWS Bed
 
 ## API Layer
 
-Handles incoming REST requests.
+Handles REST API requests.
 
 Responsible for
 
 - Request validation
 - Response generation
-- Session handling
+- Session management
 
 ---
 
 ## Input Processor
 
-Performs
+Responsible for
 
 - Input sanitization
 - Intent classification
@@ -118,32 +117,38 @@ Performs
 
 Responsible for
 
-- Prompt Versioning
-- Dynamic Prompt Construction
-- Schema Injection
-- Few-shot Examples
+- Prompt versioning
+- Dynamic prompt construction
+- Schema injection
+- Business dictionary
+- Few-shot examples
+- Conversation history
 
 ---
 
 ## Retrieval Layer
 
-Uses Sentence Transformer embeddings and FAISS to retrieve similar examples.
+Current
 
-Future replacement
+- Local Few-shot Retriever
 
-Azure AI Search
+Future
+
+- Azure AI Search
 
 ---
 
 ## LLM Layer
 
-Current
+Supported Providers
 
-AWS Bedrock
+- Azure OpenAI (Primary)
+- AWS Bedrock
 
-Future
+Responsibilities
 
-Azure OpenAI GPT-5
+- SQL Generation
+- Business Summary Generation
 
 ---
 
@@ -152,8 +157,8 @@ Azure OpenAI GPT-5
 Ensures
 
 - Valid SQL
-- No dangerous statements
 - Read-only execution
+- Prevents dangerous statements
 
 ---
 
@@ -161,18 +166,17 @@ Ensures
 
 Responsible for
 
-- Role Based Access Control
-- PII Masking
+- Role-Based Access Control (RBAC)
+- PII masking
 
 ---
 
 ## Query Executor
 
-Executes SQL against SQLite.
+Supported Databases
 
-Future
-
-Azure SQL Database
+- SQLite
+- Azure SQL Database
 
 ---
 
@@ -180,9 +184,9 @@ Azure SQL Database
 
 Stores
 
-- User Rating
+- User feedback
 - Corrected SQL
-- Future Training Data
+- Future improvements
 
 ---
 
@@ -191,43 +195,53 @@ Stores
 Tracks
 
 - Trace ID
-- Latency
-- Pipeline Logs
+- Request latency
+- Application logs
 
 Future
 
-Azure Application Insights
+- Azure Application Insights
 
 ---
 
-# Azure Migration
+# Azure Services Used
 
-| Current | Azure |
-|----------|--------|
-| AWS Bedrock | Azure OpenAI |
-| SQLite | Azure SQL |
-| JSON | Azure Blob Storage |
-| FAISS | Azure AI Search |
-| Local Memory | Azure Redis |
-| Local Logs | Azure Application Insights |
+| Service | Purpose |
+|----------|----------|
+| Azure OpenAI | SQL generation & summarization |
+| Azure SQL Database | Execute business queries |
+| Azure Blob Storage | Store prompts, schema and metadata |
+| Azure AI Search | Prepared for semantic retrieval (future integration) |
+
+---
+
+# Provider Abstraction
+
+| Component | Supported Providers |
+|-----------|---------------------|
+| LLM | AWS Bedrock / Azure OpenAI |
+| Database | SQLite / Azure SQL |
 
 ---
 
 # Security
 
 - SQL Validation
+- Read-only Queries
 - RBAC
 - PII Masking
 - Environment Variables
-- Read-only Queries
 
 ---
 
 # Future Improvements
 
+- Azure AI Search Vector Index
+- Azure Key Vault
+- Azure Application Insights
+- Azure Managed Identity
+- Azure Redis Cache
 - Streaming Responses
-- Query Cache
-- Cost Tracking
-- Retry Logic
-- Multi-turn SQL Planning
 - Prompt A/B Testing
+- Query Cache
+- Retry Logic
